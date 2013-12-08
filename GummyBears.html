@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<!--Version 0.009-->
+<html>
+    <head>
+        <title>Gummy Bears</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="shortcut icon" href="icon.ico" type="image/x-icon"/>
+        <link id="css" rel="stylesheet" type="text/css" href="tabcontent_red.css" />
+
+        <script type="text/javascript" src="tabcontent.js">
+
+            /***********************************************
+             * Tab Content script v2.2- © Dynamic Drive DHTML code library (www.dynamicdrive.com)
+             * This notice MUST stay intact for legal use
+             * Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
+             ***********************************************/
+
+        </script>
+
+        <!--Simply copy and paste into <BODY>  
+             Just above the </BODY> tag. -->
+
+        <SCRIPT type="text/javascript">
+            /*
+             Snow Fall 1 - no images - Java Script
+             Visit http://rainbow.arch.scriptmania.com/scripts/
+             for this script and many more
+             */
+
+            // Set the number of snowflakes (more than 30 - 40 not recommended)
+            var snowmax = 30;
+
+            // Set the colors for the snow. Add as many colors as you like
+            var snowcolor = new Array("#aaaacc", "#ddddff", "#ccccdd", "#f3f3f3", "#f0ffff")
+
+            // Set the fonts, that create the snowflakes. Add as many fonts as you like
+            var snowtype = new Array("Times", "Arial", "Times", "Verdana")
+
+            // Set the letter that creates your snowflake (recommended: * )
+            var snowletter = "*"
+
+            // Set the speed of sinking (recommended values range from 0.3 to 2)
+            var sinkspeed = 2
+
+            // Set the maximum-size of your snowflakes
+            var snowmaxsize = 30
+
+            // Set the minimal-size of your snowflakes
+            var snowminsize = 8
+
+            // Set the snowing-zone
+            // Set 1 for all-over-snowing, set 2 for left-side-snowing
+            // Set 3 for center-snowing, set 4 for right-side-snowing
+            var snowingzone = 1
+
+            ///////////////////////////////////////////////////////////////////////////
+            // CONFIGURATION ENDS HERE
+            ///////////////////////////////////////////////////////////////////////////
+
+
+            // Do not edit below this line
+            var snow = new Array()
+            var marginbottom
+            var marginright
+            var timer
+            var i_snow = 0
+            var x_mv = new Array();
+            var crds = new Array();
+            var lftrght = new Array();
+            var browserinfos = navigator.userAgent
+            var ie5 = document.all && document.getElementById && !browserinfos.match(/Opera/)
+            var ns6 = document.getElementById && !document.all
+            var opera = browserinfos.match(/Opera/)
+            var browserok = ie5 || ns6 || opera
+
+            function randommaker(range) {
+                rand = Math.floor(range * Math.random())
+                return rand
+            }
+
+            function initsnow() {
+                if (ie5 || opera) {
+                    marginbottom = document.body.scrollHeight
+                    marginright = document.body.clientWidth - 15
+                }
+                else if (ns6) {
+                    marginbottom = document.body.scrollHeight
+                    marginright = window.innerWidth - 15
+                }
+                var snowsizerange = snowmaxsize - snowminsize
+                for (i = 0; i <= snowmax; i++) {
+                    crds[i] = 0;
+                    lftrght[i] = Math.random() * 15;
+                    x_mv[i] = 0.03 + Math.random() / 10;
+                    snow[i] = document.getElementById("s" + i)
+                    snow[i].style.fontFamily = snowtype[randommaker(snowtype.length)]
+                    snow[i].size = randommaker(snowsizerange) + snowminsize
+                    snow[i].style.fontSize = snow[i].size + 'px';
+                    snow[i].style.color = snowcolor[randommaker(snowcolor.length)]
+                    snow[i].style.zIndex = 1000
+                    snow[i].sink = sinkspeed * snow[i].size / 5
+                    if (snowingzone == 1) {
+                        snow[i].posx = randommaker(marginright - snow[i].size)
+                    }
+                    if (snowingzone == 2) {
+                        snow[i].posx = randommaker(marginright / 2 - snow[i].size)
+                    }
+                    if (snowingzone == 3) {
+                        snow[i].posx = randommaker(marginright / 2 - snow[i].size) + marginright / 4
+                    }
+                    if (snowingzone == 4) {
+                        snow[i].posx = randommaker(marginright / 2 - snow[i].size) + marginright / 2
+                    }
+                    snow[i].posy = randommaker(2 * marginbottom - marginbottom - 2 * snow[i].size)
+                    snow[i].style.left = snow[i].posx + 'px';
+                    snow[i].style.top = snow[i].posy + 'px';
+                }
+                movesnow()
+            }
+
+            function movesnow() {
+                for (i = 0; i <= snowmax; i++) {
+                    crds[i] += x_mv[i];
+                    snow[i].posy += snow[i].sink
+                    snow[i].style.left = snow[i].posx + lftrght[i] * Math.sin(crds[i]) + 'px';
+                    snow[i].style.top = snow[i].posy + 'px';
+
+                    if (snow[i].posy >= marginbottom - 2 * snow[i].size || parseInt(snow[i].style.left) > (marginright - 3 * lftrght[i])) {
+                        if (snowingzone == 1) {
+                            snow[i].posx = randommaker(marginright - snow[i].size)
+                        }
+                        if (snowingzone == 2) {
+                            snow[i].posx = randommaker(marginright / 2 - snow[i].size)
+                        }
+                        if (snowingzone == 3) {
+                            snow[i].posx = randommaker(marginright / 2 - snow[i].size) + marginright / 4
+                        }
+                        if (snowingzone == 4) {
+                            snow[i].posx = randommaker(marginright / 2 - snow[i].size) + marginright / 2
+                        }
+                        snow[i].posy = 0
+                    }
+                }
+                var timer = setTimeout("movesnow()", 50)
+            }
+
+            for (i = 0; i <= snowmax; i++) {
+                document.write("<span id='s" + i + "' style='position:absolute;top:-" + snowmaxsize + "'>" + snowletter + "</span>")
+            }
+            if (browserok) {
+                window.onload = initsnow
+            }
+
+        </SCRIPT>
+
+
+        <style>
+            body {
+                color: white;
+                font-family: arial;
+                font-size: 16px;
+                font-weight: bold;
+
+                background-size: 100%;
+                margin-left: 0;
+                margin-right: 0;
+                overflow: hidden;
+            }
+
+            h1 {
+                position: relative;
+                font-weight: bold; 
+                font-size: 25px;
+                letter-spacing: 3px;
+                font-family: impact;
+                text-align: center;
+                color: #ffff00;  
+                z-index: 3;
+            }
+
+
+
+
+            li {
+                border-bottom-width: 0px;
+            }
+
+            #titulo {
+                position: absolute;
+                top: 0px;
+                font-size: 24px;
+            }
+
+            #log {
+                position: absolute;
+                top: 450px;
+                left: 10px;               
+                width: 450px;
+                height: 170px;
+                background: white;
+                color: white;
+                font-family: monospace;
+                font-size: 14px;
+                border: gray solid 3px;
+                box-shadow: black 5px 5px 10px;
+                z-index: 1;
+                background: inherit;
+                overflow: auto;
+            }
+
+            #clearLog {
+                position: absolute;
+                top: 428px;
+                left: 397px;
+                box-shadow: black 5px 5px 10px;
+            }
+
+            .shadetabs li a.selected {
+                z-index: 3;
+            }
+
+            #listaUpgrades {
+                width: 280px;
+                height: 500px;
+                position: absolute;
+                top: 0px;
+                left: 80%;
+                box-shadow: black -5px 5px 10px;
+                border-bottom-left-radius: 10px 10px;
+                padding-left: 15px;
+            }
+            #main {
+                z-index: 3;
+                position: relative;
+            }
+            #barra {
+                position: absolute;
+                height: 100%;
+                width: 400px;
+                top: 0;
+                left: 442px;
+                opacity: 0.4;
+                background: black;
+            }
+            
+            .normal {
+                position: absolute;
+                left: 13%;
+                top: 5%;
+                -webkit-transition-duration: 0.1s;
+                z-index: 5;
+            }
+            #oso.normal:hover {
+                -webkit-transform: scale(1.2);
+                -webkit-transition-duration: 0.1s;
+            }
+            
+            @-webkit-keyframes animClick {
+                from {
+                    -webkit-transform: scale(3.0);
+                }
+                to {
+                    -webkit-transform: scale(2.0);
+                }
+            }
+            
+            .clicked {
+                position: absolute;
+                left: 13%;
+                top: 5%;
+                z-index: 5;
+                -webkit-transform: scale(1.07);
+                /*-webkit-animation-name: animClick;
+                -webkit-animation-iteration-count: 1;
+                -webkit-animation-timing-function: ease;
+                -webkit-animation-fill-mode: forwards;*/
+            }
+            
+           
+            
+            .disabled {
+                position: absolute;
+                left: 13%;
+                top: 5%;
+                -webkit-transition-duration: 0.1s;
+                z-index: 5;
+            }
+            
+            #clicks {
+                position: absolute;
+                padding: 3px;
+                z-index: 6;
+            }
+            
+            #comprarOso {
+                position: absolute;
+                top: 5%;
+                left: 13%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id='header'>
+            <p id="titulo">Gummy Bears v.0.009<span style='font-size: 12px'> in dev.</span></p>
+            <p id="contadorGmB" style="position: absolute; top: 0px; left: 700px;">GmB: <span id="contGmB">0</span></p>
+            <p id="contadorGmBs" style="position: absolute; top: 20px; left: 700px;">GmB/s: <span id="contGmBs">1</span></p>
+        </div>
+
+        <ul id="countrytabs" class="shadetabs" style="position: absolute; top: 30px; left: 300px;">
+            <li><a href="#" rel="game" class="selected">Game</a></li>
+            <li><a href="#" rel="config">Config.</a></li>
+            <li><a href="#" rel="about">About</a></li>
+        </ul>
+
+
+        <div  id='tabsBar' style="border-top: 8px solid #FA4E4E; border-bottom: 8px solid #FA4E4E; position: absolute; top: 55px; width: 100%; z-index: 2; box-shadow: rgb(25, 25, 25) -20px 1px 30px 0px;"></div>
+
+        <div id="game" class="tabcontent" style="background: url('bg.jpg'); background-size: 50%; height: 100%; width: 100%; position: absolute; top: 70px; ">
+            <div id="clicks">
+                <p>Remaining clicks: <span id="remClicks">988</span></p>
+                <p>Total clicks: <span id="totClicks">0</span></p>
+            </div>
+            <button type="button" id="comprarOso">Buy 5 lb.<br>Gummy Bear</button>
+            <img id="oso" src="oso_grande.gif" class="normal" hidden/>
+            <h1 id="heading1">IN DEVELOPMENT</h1>
+            
+            <div style="text-align: center;" id="main">
+                <p id="gmb">Gummy Bears: 0</p>
+                <p id="ps">Gummy Bears per second: 1</p>
+                <p id='botonUpg1P' hidden><button id="botonUpg1" type="button"></button><span id="precio1"> Price: 10 GmB</span></p>
+                <p id='botonUpg2P' hidden><button id="botonUpg2" type="button"></button><span id="precio2"> Price: 100 GmB</span></p>
+                <p id='botonUpg3P' hidden><button id="botonUpg3" type="button"></button><span id="precio3"> Price: 1000 GmB</span></p>
+            </div>
+            <div id="barra"></div>
+            <div id="listaUpgrades" hidden>
+                <p id="cantUpg0" hidden></p>
+                <p id="cantUpg1" hidden></p>
+                <p id="cantUpg2" hidden></p>
+            </div>
+        </div>
+        <div id='fondoTabs' style="position: absolute; top: 70px; width: 100%; height: 100%; z-index: -1; background: rgb(219, 18, 18);"></div>
+        <div id="config" class="tabcontent" style="position: absolute; top: 70px; ">
+            <p style="left: 50%;"><button type="button" id="saveButton">Save</button></p>
+            <form>
+                Text save: <input type="text" id="textSave"> <button type="button" id="botonTextSave">Load text save</button> <button type="button" id="selectAll">Select all</button>(Warning: once you load the save, you won't be able to revert to the previous save, unless you keep it in text form)
+            </form>
+            <p style="left: 50%;"><button id="deleteSaveButton" type="button">Delete save</button></p>
+            <p>Color scheme selector: 
+                <select id="selectColor">
+                    <option>Red</option>
+                    <option>Yellow</option>
+                    <option>Blue</option>
+                    <option>Green</option>
+                    <option>Orange</option>
+                    <option>Purple</option>
+                    <option>Pink</option>
+                </select>
+            </p>
+            <p>Version selector:
+                <select  id="selectVersion">
+                    <option>0.004</option>
+                    <option>0.005</option>
+                    <option>0.006</option>
+                    <option>0.007</option>
+                    <option>0.008</option>
+                </select>
+                <a id="submitVersion" target="-blank" href='Versiones/0.004/AppletForm.html'>
+                    <button type='button'>Load version</button>
+                </a>   
+            </p>
+        </div>
+
+        <div id="about" class="tabcontent" style="width: 470px; position: absolute; top: 70px; left: 50%; margin-left: -235px;">
+            <footer>
+                <div style="font: bold 13px arial, sans-serif;">
+                    <p style="width: 470px; position: absolute; left: 50%; margin-left: -235px;">
+                        Inspired by and/or based on <a href="http://candies.aniwey.net">Candy Box</a>, <a href="http://candybox2.net">Candy Box 2</a>, and <a href="http://orteil.dashnet.org/cookieclicker">Cookie Clicker</a>.
+                    </p>
+                </div>
+            </footer>
+        </div>
+
+
+        <div id="log">Welcome to Gummy Bears!</div> 
+        <button id="clearLog" type="button">Clear log</button>
+
+
+        <script type="text/javascript">
+
+            var countries = new ddtabcontent("countrytabs");
+            countries.setpersist(true);
+            countries.setselectedClassTarget("link"); //"link" or "linkparent"
+            countries.init();
+
+        </script>
+
+
+
+        <script src="main.js"></script>
+        <script type="text/javascript">
+            var sc_project = 9381671;
+            var sc_invisible = 1;
+            var sc_security = "18996a51";
+            var scJsHost = (("https:" == document.location.protocol) ?
+                    "https://secure." : "http://www.");
+            document.write("<sc" + "ript type='text/javascript' src='" +
+                    scJsHost +
+                    "statcounter.com/counter/counter.js'></" + "script>");
+        </script>
+        <noscript><div class="statcounter"><a title="click tracking"
+                                              href="http://statcounter.com/" target="_blank"><img
+                    class="statcounter"
+                    src="http://c.statcounter.com/9381671/0/18996a51/1/"
+                    alt="click tracking"></a></div></noscript>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('ul#navigation li').click(function() {
+                    var number = $(this).index();
+                    $('.sec').hide().eq(number).show();
+                    $(this).toggleClass('active inactive');
+                    $('ul#navigation li').not(this).removeClass('active').addClass('inactive');
+                });
+                $('.sec').not(':first').hide();
+            });
+        </script>
+    </body>
+</html>
