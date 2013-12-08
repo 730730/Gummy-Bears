@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!--Version 0.008-->
+<html>
+    <head>
+        <title>Gummy Bears</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="shortcut icon" href="icon.ico" type="image/x-icon"/>
+        <link id="css" rel="stylesheet" type="text/css" href="tabcontent_red.css" />
+
+        <script type="text/javascript" src="tabcontent.js">
+
+            /***********************************************
+             * Tab Content script v2.2- © Dynamic Drive DHTML code library (www.dynamicdrive.com)
+             * This notice MUST stay intact for legal use
+             * Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
+             ***********************************************/
+
+        </script>
+        <style>
+            body {
+                color: white;
+                font-family: arial;
+                font-size: 16px;
+                font-weight: bold;
+
+                background-size: 100%;
+                margin-left: 0;
+                margin-right: 0;
+                overflow: hidden;
+            }
+
+            h1 {
+
+                font-weight: bold; 
+                font-size: 25px;
+                letter-spacing: 3px;
+                font-family: impact;
+                text-align: center;
+                color: #ffff00;  
+
+            }
+
+
+            main {
+                text-align: center;
+            }
+
+            header {
+                position: absolute;
+            }
+
+            li {
+                border-bottom-width: 0px;
+            }
+
+            #titulo {
+                position: absolute;
+                top: 0px;
+                font-size: 24px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id='header'>
+            <p id="titulo">Gummy Bears v.0.008</p>
+            <p id="contadorGmB" style="position: absolute; top: 0px; left: 660px;">GmB: <span id="contGmB">0</span></p>
+            <p id="contadorGmBs" style="position: absolute; top: 20px; left: 660px;">GmB/s: <span id="contGmBs">1</span></p>
+        </div>
+
+        <ul id="countrytabs" class="shadetabs" style="position: absolute; top: 30px; left: 260px;">
+            <li><a href="#" rel="game" class="selected">Game</a></li>
+            <li><a href="#" rel="config">Config.</a></li>
+            <li><a href="#" rel="about">About</a></li>
+        </ul>
+
+
+        <div  id='tabsBar' style="border: 8px solid #FA4E4E; position: absolute; top: 55px; width: 1502px; z-index: 2;"></div>
+        <div>
+
+            <div id="game" class="tabcontent" style="background: url('bg.jpg'); background-size: 50%; height: 100%; width: 100%; position: absolute; top: 70px; ">
+
+                <h1 id="heading1">IN DEVELOPMENT</h1>
+                <h1 id="heading2">EN DESARROLLO</h1>
+
+                <div style="text-align: center;" id="main">
+                    <p id="gmb">Gummy Bears: 0</p>
+                    <p id="ps">Gummy Bears per second: 1</p>
+                    <p id='botonUpgP' hidden><button id="botonUpg" type="button">Upgrade 1</button><span id="precio1"> Price: 10 GmB</span></p>
+
+                </div>
+
+            </div>
+            <div style="position: absolute; top: 70px; width: 1518px; height: 100%; background: white; z-index: -1"></div>
+            <div id="config" class="tabcontent" style="position: absolute; top: 70px; color: black;">
+                <p style="left: 50%;"><button type="button" id="saveButton">Save</button></p>
+                <p style="left: 50%;"><button id="deleteSaveButton" type="button">Delete save</button></p>
+                <p>Color scheme selector: 
+                    <select id="selectColor">
+                        <option>Red</option>
+                        <option>Yellow</option>
+                        <option>Blue</option>
+                        <option>Green</option>
+                        <option>Orange</option>
+                        <option>Purple</option>
+                        <option>Pink</option>
+                    </select>
+                </p>
+                <p>Version selector: (you can't change version on an older version)
+                    <select  id="selectVersion">
+                        <option>0.004</option>
+                        <option>0.005</option>
+                        <option>0.006</option>
+                        <option>0.007</option>
+                    </select>
+                    <a id="submitVersion" href='Versiones/0.004/AppletForm.html'>
+                        <button type='button'>Load version</button>
+                    </a>   
+                    (remember to save before you go!)
+                </p>
+            </div>
+
+            <div id="about" class="tabcontent" style="width: 470px; position: absolute; top: 70px; left: 50%; margin-left: -235px;">
+                <footer>
+                    <div style="font: bold 13px arial, sans-serif; color: black;">
+                        <p style="width: 470px; position: absolute; left: 50%; margin-left: -235px;">
+                            Inspired by and/or based on <a href="http://candies.aniwey.net">Candy Box</a>, <a href="http://candybox2.net">Candy Box 2</a>, and <a href="http://orteil.dashnet.org/cookieclicker">Cookie Clicker</a>.
+                        </p>
+                    </div>
+                </footer>
+            </div>
+
+            <div id="country4" class="tabcontent">
+
+            </div>
+
+        </div>
+
+        <script type="text/javascript">
+
+            var countries = new ddtabcontent("countrytabs");
+            countries.setpersist(true);
+            countries.setselectedClassTarget("link"); //"link" or "linkparent"
+            countries.init();
+
+        </script>
+
+
+
+        <script src="main.js"></script>
+        <script type="text/javascript">
+            var sc_project = 9381671;
+            var sc_invisible = 1;
+            var sc_security = "18996a51";
+            var scJsHost = (("https:" == document.location.protocol) ?
+                    "https://secure." : "http://www.");
+            document.write("<sc" + "ript type='text/javascript' src='" +
+                    scJsHost +
+                    "statcounter.com/counter/counter.js'></" + "script>");
+        </script>
+        <noscript><div class="statcounter"><a title="click tracking"
+                                              href="http://statcounter.com/" target="_blank"><img
+                    class="statcounter"
+                    src="http://c.statcounter.com/9381671/0/18996a51/1/"
+                    alt="click tracking"></a></div></noscript>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('ul#navigation li').click(function() {
+                    var number = $(this).index();
+                    $('.sec').hide().eq(number).show();
+                    $(this).toggleClass('active inactive');
+                    $('ul#navigation li').not(this).removeClass('active').addClass('inactive');
+                });
+                $('.sec').not(':first').hide();
+            });
+        </script>
+    </body>
+</html>

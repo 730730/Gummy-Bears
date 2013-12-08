@@ -1,0 +1,46 @@
+09/11/2013 - 00:21
+v0.008
+-Mejorada la interfaz exterior (pestañas, etc.)
+  *Las pestañas son pestañas y no botones
+  *Cada sección tiene su propio fondo (la sección de Config. y About tienen un fondo blanco)
+-Añadido selector de esquema de colores de la interfaz (rojo, amarillo, azul, verde, naranja, violeta y rosa)
+-Añadido selector de versiones (a partir de 0.004)
+-Ahora los Gummy Bears se actualizan cada 8 ms en vez de 1000
+-Ahora el título de la página muestra la cantidad actual de Gummy Bears
+-El upgrade sube más rápido su precio
+
+05/11/2013 - 21:07
+v0.007
+-Añadida interfaz con pestañas de Juego, Configuración, y About
+
+04/11/2013 - 21:37
+v0.006:
+-Añadidas opciones de guardar y eliminar guardado
+-Añadido StatCounter a la página
+
+03/11/2013 - 02:xx
+v0.005:
+-Port a JavaScript
+-El upgrade ahora sube su precio
+-Arreglados bugs de negatividad de en cantidad de GmB
+-Añadido letrero de "IN DEVELOPMENT/EN DESARROLLO"
+-Añadido ícono de página (favicon)
+
+29/10/2013 - 20:xx
+v0.004:
+-Añadidos créditos a Candy Box, Candy Box 2, y Cookie Clicker 
+
+29/10/2013 - 12:xx
+v0.003:
+-Fondo añadido
+-Applet centrado
+
+28/10/2013 - 18:xx
+v0.002:
+-Web Port
+
+27/10/2013 - 18:xx
+v0.001:
+-Contador de Gummy Bears
+-Contador de GmB/s
+-Botón para añadir 1 GmB/s, con un costo de 10 GmB

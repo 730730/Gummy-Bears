@@ -1,0 +1,23 @@
+05/11/2013 - 21:07
+-Añadida interfaz con pestañas de Juego, Configuración, y About
+04/11/2013 - 21:37
+v0.006:
+-Añadidas opciones de guardar y eliminar guardado
+-Añadido StatCounter a la página
+v0.005:
+-Port a JavaScript
+-Arreglados bugs de negatividad de Gummy Bears
+-El upgrade ahora sube su precio
+-Añadido letrero de "IN DEVELOPMENT/EN DESARROLLO"
+-Añadido ícono de página (favicon)
+v0.004:
+-Añadidos créditos a Candy Box, Candy Box 2, y Cookie Clicker 
+v0.003:
+-Fondo añadido
+-Applet centrado
+v0.002:
+-Web Port
+v0.001:
+-Contador de Gummy Bears
+-Contador de GmB/s
+-Botón para añadir 1 GmB/s, con un costo de 10 GmB

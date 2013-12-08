@@ -1,0 +1,67 @@
+/* ######### CSS for Shade Tabs. Remove if not using ######### */
+#listaUpgrades {
+background: #703F00;
+border-left: #FF8500 solid 10px;
+border-bottom: #FF8500 solid 10px;
+}
+body {
+background: #703F00;
+}
+.shadetabs{
+padding: 3px 0;
+margin-left: 0;
+margin-top: 1px;
+margin-bottom: 0;
+margin-right: 0px;
+font: bold 12px Verdana;
+list-style-type: none;
+text-align: left; /*set to left, center, or right to align the menu as desired*/
+}
+
+.shadetabs li{
+display: inline;
+margin: 0;
+}
+
+.shadetabs li a{
+text-decoration: none;
+position: relative;
+z-index: 0;
+padding: 7px 40px 9px;
+margin-right: 3px;
+color: white;
+background: #C76800 top left repeat-x;
+border-top-left-radius: 10px 10px;
+border-top-right-radius: 10px 10px;
+}
+
+.shadetabs li a:visited{
+color: white;
+}
+
+.shadetabs li a:hover{
+text-decoration: none;
+color: white;
+}
+
+.shadetabs li a.selected{ /*selected main tab style */
+position: relative;
+bottom: 2px;
+background-color: #FF8500
+}
+
+
+.shadetabs li a.selected:hover{ /*selected main tab style */
+text-decoration: none;
+}
+
+.tabcontent{
+display:none;
+}
+
+@media print {
+.tabcontent {
+display:block !important;
+}
+}
+
